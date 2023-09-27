@@ -1,0 +1,673 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/13/2023 6:22:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-CG4TQU62"
+  DTS:CreatorName="LAPTOP-CG4TQU62\Paola"
+  DTS:DTSID="{6221C6C8-5B52-4B58-A209-9BDAF7B96663}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="2058"
+  DTS:ObjectName="ejercicio_tarea_flujo_datos"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{A9C0722D-0068-4508-BF55-097A46AC8903}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{F2F8BF35-308C-40AF-91B1-4DA5CFA92285}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Paola\Desktop\WorldCups.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{4D49ABBD-3519-4E43-BDD0-E7D98C9F810C}"
+      DTS:ObjectName="Administrador de conexiones con Excel 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\Paola\Desktop\WorldCups.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Fifa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0A355788-55BE-485E-8903-3AA6CA36C56E}"
+      DTS:ObjectName="LocalHost.Fifa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Fifa;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-ejercicio_tarea_flujo_datos-{0A355788-55BE-485E-8903-3AA6CA36C56E}LocalHost.Fifa;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.NORTHWND]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B33B9CB3-87EB-441D-9E2D-CD508C10BB0C}"
+      DTS:ObjectName="LocalHost.NORTHWND">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=NORTHWND;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-ejercicio_tarea_flujo_datos-{B33B9CB3-87EB-441D-9E2D-CD508C10BB0C}LocalHost.NORTHWND;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Agregar Archivo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{A301FA53-779A-43EC-9311-3C6C72FDAEF1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Agregar Archivo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Agregar Archivo\Destino de OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino de OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[WorldCups]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Agregar Archivo\Destino de OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Fifa]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Fifa]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Year]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Winner]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Winner"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Winner]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Winner]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Third]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Third"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Third]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Third]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Fourth]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Fourth"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Fourth]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fourth]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[GoalsScored]"
+                      cachedDataType="r8"
+                      cachedName="GoalsScored"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[GoalsScored]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[GoalsScored]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[QualifiedTeams]"
+                      cachedDataType="r8"
+                      cachedName="QualifiedTeams"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[QualifiedTeams]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[QualifiedTeams]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[MatchesPlayed]"
+                      cachedDataType="r8"
+                      cachedName="MatchesPlayed"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[MatchesPlayed]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[MatchesPlayed]" />
+                    <inputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Attendance]"
+                      cachedDataType="r8"
+                      cachedName="Attendance"
+                      externalMetadataColumnId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Attendance]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Attendance]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="25"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Winner]"
+                      dataType="wstr"
+                      length="25"
+                      name="Winner" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[RunnersUp]"
+                      dataType="wstr"
+                      length="25"
+                      name="RunnersUp" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Third]"
+                      dataType="wstr"
+                      length="25"
+                      name="Third" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Fourth]"
+                      dataType="wstr"
+                      length="25"
+                      name="Fourth" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[GoalsScored]"
+                      dataType="i4"
+                      name="GoalsScored" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[QualifiedTeams]"
+                      dataType="i4"
+                      name="QualifiedTeams" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[MatchesPlayed]"
+                      dataType="i4"
+                      name="MatchesPlayed" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Attendance]"
+                      dataType="r8"
+                      name="Attendance" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Agregar Archivo\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Agregar Archivo\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Agregar Archivo\Destino de OLE DB.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Agregar Archivo\Origen de Excel"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Origen de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+              description="Origen de Excel"
+              name="Origen de Excel"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">WorldCups$</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="La asignación de parámetros del comando SQL a variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Agregar Archivo\Origen de Excel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel 1]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel]"
+                  name="Salida de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Year]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Country]"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Winner]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Winner]"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Winner]"
+                      name="Winner"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Runners-Up]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Runners-Up]"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Runners-Up]"
+                      name="Runners-Up"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Third]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Third]"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Third]"
+                      name="Third"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fourth]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fourth]"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Fourth]"
+                      name="Fourth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[GoalsScored]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[GoalsScored]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[GoalsScored]"
+                      name="GoalsScored"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[QualifiedTeams]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[QualifiedTeams]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[QualifiedTeams]"
+                      name="QualifiedTeams"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[MatchesPlayed]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[MatchesPlayed]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[MatchesPlayed]"
+                      name="MatchesPlayed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Attendance]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Attendance]"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].Columns[Attendance]"
+                      name="Attendance"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Winner]"
+                      dataType="wstr"
+                      length="255"
+                      name="Winner" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Runners-Up]"
+                      dataType="wstr"
+                      length="255"
+                      name="Runners-Up" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Third]"
+                      dataType="wstr"
+                      length="255"
+                      name="Third" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Fourth]"
+                      dataType="wstr"
+                      length="255"
+                      name="Fourth" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[GoalsScored]"
+                      dataType="r8"
+                      name="GoalsScored" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[QualifiedTeams]"
+                      dataType="r8"
+                      name="QualifiedTeams" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[MatchesPlayed]"
+                      dataType="r8"
+                      name="MatchesPlayed" />
+                    <externalMetadataColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel].ExternalColumns[Attendance]"
+                      dataType="r8"
+                      name="Attendance" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de Excel">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Winner]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Winner]"
+                      name="Winner" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Runners-Up]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Runners-Up]"
+                      name="Runners-Up" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Third]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Third]"
+                      name="Third" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fourth]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Fourth]"
+                      name="Fourth" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[GoalsScored]"
+                      dataType="r8"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[GoalsScored]"
+                      name="GoalsScored" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[QualifiedTeams]"
+                      dataType="r8"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[QualifiedTeams]"
+                      name="QualifiedTeams" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[MatchesPlayed]"
+                      dataType="r8"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[MatchesPlayed]"
+                      name="MatchesPlayed" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Attendance]"
+                      dataType="r8"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[Attendance]"
+                      name="Attendance" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de error de origen de Excel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Agregar Archivo.Paths[Salida de origen de Excel]"
+              endId="Package\Agregar Archivo\Destino de OLE DB.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de origen de Excel"
+              startId="Package\Agregar Archivo\Origen de Excel.Outputs[Salida de origen de Excel]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Agregar Archivo"
+          TopLeft="248,68" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Agregar Archivo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Agregar Archivo\Origen de Excel"
+          TopLeft="245,43" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Agregar Archivo\Destino de OLE DB"
+          TopLeft="504,80" />
+        <EdgeLayout
+          Id="Package\Agregar Archivo.Paths[Salida de origen de Excel]"
+          TopLeft="402,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102,37"
+              Start="0,0"
+              End="94.5,37">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47,0"
+                    Point2="51,0"
+                    Point3="51,4" />
+                  <mssgle:LineSegment
+                    End="51,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51,33"
+                    Point2="51,37"
+                    Point3="55,37" />
+                  <mssgle:LineSegment
+                    End="94.5,37" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Agregar Archivo\Origen de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Agregar Archivo\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
